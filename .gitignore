@@ -37,3 +37,9 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+#data files
+*.csv
+FATAL ENCOUNTERS DOT ORG SPREADSHEET (See Read me tab).xlsx
+STA304-PS5-1.pdf
+data/
