@@ -8,6 +8,8 @@ library(tidyverse)
 canada_raw <- read.csv("data/canada_fatalities.csv")
 usa_raw <- read.csv("data/usa_fatalities.csv")
 
+usa_raw <- read.csv("data/update_usa.csv")
+
 #Select just the columns of interest from both the Canadian and USA data set
 canada <- canada_raw %>% select(DATE, AGE, GENDER, RACE, PROV, POLICE.SERVICE, 
                                 CAUSE.DEATH)
@@ -49,8 +51,11 @@ canada$Date <- as.character(as.Date(as.character(canada$Date), "%Y-%m-%d"))
 #Remove the data with dates in 2020, since the data collection is not up to date
 
 
-canada <- canada %>% subset(canada$Date < as.Date("2020-01-01"))
-usa <- usa %>% subset(usa$Date < as.Date("2020-01-01"))
+canada <- canada %>% subset(canada$Date >= as.Date("2020-01-01"))
+usa <- usa %>% subset(usa$Date >= as.Date("2020-01-01"))
+
+nrow(canada)
+nrow(usa)
 
 
 #Replace blank race info with Unknown or unspecified
